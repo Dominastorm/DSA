@@ -1,0 +1,16 @@
+Data Strucure Operations
+1. Inserting
+2. Deleting
+3. Searching
+4. Copying
+5. Merging
+6. Sorting
+7. Traversing
+
+Working of realloc() 
+1. Contents unchanged until the minimum of the two sizes (new and old)
+2. If new size is larger than old size, new memory is allocated but not initialized
+3. If ptr is NULL, acts like malloc(size) for size > 0 
+4. If ptr is not NULL, and size is 0, act like free(ptr)
+5. It can move the memory to a new location
+6. It will return a pointer to the newly allocated memory

@@ -1,0 +1,20 @@
+Types of binary trees
+
+1. Strictly - every node in the tree has eiher 0 or 2 children
+
+2. Fully - all leaf nodes are at the same level
+
+3. Complete - all levels are completely filled except possible the last level, and the last level has all keys as left as possible.
+
+4. BST - left subtree has nodes smaller than parent and right has greater than
+       - left and right subtrees are also BSTs
+
+Tree traversal
+
+      8
+  4      12
+1   6  10 
+
+preorder - 8, 4, 1, 6, 12, 10
+inoder - 1, 4, 6, 8, 10, 12
+postorder - 1, 6, 4, 10, 12, 8
