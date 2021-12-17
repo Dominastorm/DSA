@@ -13,7 +13,8 @@ To-Do
     a. at front ✓
     b. at back ✓
     c. at intermediate position ✓
-5. Traverse and display list
+5. Traverse and display list ✓
+6. Make choice based menu 
 */
 
 typedef struct node {
@@ -105,6 +106,18 @@ Node* deleteAtPosition(Node *head, int pos) {
     return head;
 }
 
+void display(Node* head) { 
+    if (head->next == NULL) {
+        printf("Empty list\n");
+        return;
+    }
+    while(head->next->next != NULL) {
+        head = head->next;
+        printf("%d -> ", head->data);
+    }
+    printf("%d\n", head->next->data);
+}
+
 int main() {
     Node* head = (Node*) malloc(sizeof(Node));
     head = insertBack(head, 1);
@@ -114,11 +127,8 @@ int main() {
     head = insertBack(head, 5);
     // head = insertAtPosition(head, 5, 6);
     head = deleteAtPosition(head, 2);
-    // printf("%d\n", head->data);
-    printf("%d\n", head->next->data);
-    printf("%d\n", head->next->next->data);
-    printf("%d\n", head->next->next->next->data);
-    printf("%d\n", head->next->next->next->next->data);
+
+    display(head);
     // choice to select what to do
 
 
