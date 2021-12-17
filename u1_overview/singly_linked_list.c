@@ -13,8 +13,8 @@ To-Do
     a. at front ✓
     b. at back ✓
     c. at intermediate position ✓
-5. Traverse and display list ✓
-6. Make choice based menu 
+5. Traverse and display list ✓  
+6. Make choice based menu ✓
 */
 
 typedef struct node {
@@ -26,8 +26,7 @@ Node* insertFront(Node *head, int data) {
     Node* block = (Node*) malloc(sizeof(Node));
     block->data = data;
     block->next = head;
-    head = block;
-    return head;
+    return block;
 }
 
 Node* insertBack(Node *head, int data) {
@@ -107,30 +106,89 @@ Node* deleteAtPosition(Node *head, int pos) {
 }
 
 void display(Node* head) { 
+    printf(" %d", head->data);
     if (head->next == NULL) {
         printf("Empty list\n");
         return;
     }
-    while(head->next->next != NULL) {
+    while(head->next != NULL) {
         head = head->next;
-        printf("%d -> ", head->data);
+        printf(" -> %d", head->data);
     }
-    printf("%d\n", head->next->data);
 }
 
 int main() {
     Node* head = (Node*) malloc(sizeof(Node));
-    head = insertBack(head, 1);
-    head = insertBack(head, 2);
-    head = insertBack(head, 3);
-    head = insertBack(head, 4);
-    head = insertBack(head, 5);
-    // head = insertAtPosition(head, 5, 6);
-    head = deleteAtPosition(head, 2);
+    head->next = NULL;
 
-    display(head);
-    // choice to select what to do
-
-
+    // choice based menu
+    int choice;
+    int data;
+    int pos;
+    while (1) {
+        printf(
+        "\nChoose the operation you want to perform\n"
+        "1. Insert front\n"
+        "2. Insert back\n"
+        "3. Insert at position\n"
+        "4. Delete front\n"
+        "5. Delete back\n"
+        "6. Delete at position\n"
+        "7. Display\n"
+        "0. Exit\n"
+        );
+    
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+    
+    // insert front
+    if (choice == 1) {
+        printf("Enter element to be inserted: ");
+        scanf("%d", &data);
+        head = insertFront(head, data);    
+        printf("Element inserted\n Current list:");
+        display(head);
+    }
+    // insert back
+    else if (choice == 2) {
+        printf("Enter element to be inserted: ");
+        scanf("%d", &data);
+        head = insertBack(head, data);
+        display(head);
+    }
+    // insert at position
+    else if (choice == 3) {
+        printf("Enter element to be inserted: ");
+        scanf("%d", &data);
+        printf("Enter position to be inserted at: ");
+        scanf("%d", &pos);
+        head = insertAtPosition(head, data, pos);
+        display(head);
+    }
+    // delete front
+    else if (choice == 4) {
+        head = deleteFront(head);
+        display(head);
+    }
+    // delete back
+    else if (choice == 5) {
+        head = deleteBack(head);
+        display(head);
+    }
+    // delete at position
+    else if (choice == 6) {
+        printf("Enter position to be deleted at: ");
+        scanf("%d", &pos);
+        head = deleteAtPosition(head, pos);
+        display(head);
+    }
+    // traverse and display
+    else if (choice == 7) {
+        display(head);
+    }
+    // exit
+    else 
+        break;
+    }
     return 0;
 }
