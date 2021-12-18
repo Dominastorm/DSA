@@ -569,14 +569,14 @@ void bst_postorder_helper(int *bst, int i)
 {
     if (bst[i] != -1)
     {
-        // Rootnode
-        printf("%d ", bst[i]);
-
         // Left node
         bst_postorder_helper(bst, 2 * i + 1);
 
         // Right node
         bst_postorder_helper(bst, 2 * i + 2);
+
+        // Rootnode
+        printf("%d ", bst[i]);
     }
 }
 
@@ -592,11 +592,11 @@ void bst_inorder_helper(int *bst, int i)
 {
     if (bst[i] != -1)
     {
-        // Rootnode
-        printf("%d ", bst[i]);
-
         // Left node
         bst_inorder_helper(bst, 2 * i + 1);
+
+        // Rootnode
+        printf("%d ", bst[i]);
 
         // Right node
         bst_inorder_helper(bst, 2 * i + 2);
