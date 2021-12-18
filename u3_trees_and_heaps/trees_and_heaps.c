@@ -280,7 +280,7 @@ void postorder_leaves(Node *root)
 
         // Traverse right subtree
         postorder_leaves(root->right);
-        
+
         // visit root node
         printf("%d ", root->data);
     }
@@ -430,6 +430,17 @@ void delete_node(Tree *tree, int value)
         return;
     }
 
+    // If temp has no children
+    else if (temp->left == NULL && temp->right == NULL)
+    {
+        if (temp == parent->left)
+            parent->left = NULL;
+        else
+            parent->right = NULL;
+        free(temp);
+        return;
+    }
+
     // Temp has only one child (left)
     else if (temp->right == NULL)
     {
@@ -443,7 +454,7 @@ void delete_node(Tree *tree, int value)
     }
 
     // Temp has two children
-    else
+    else 
     {
         // Find the inorder successor (min. value in the right subtree)
         inorder_succ = temp->right;
@@ -715,6 +726,6 @@ void adjust(int *heap, int n)
         heap[parent] = key;
     }
 
-// Priority Queue using Heap
+    // Priority Queue using Heap
 
-// In separate file - pq_heap.c
+    // In separate file - pq_heap.c
