@@ -32,6 +32,15 @@ Node* insertFront(Node* head, int data) {
 Node* insertBack(Node* head, int data) {
     Node* block = (Node*) malloc(sizeof(Node));
     block->data = data;
+    if (head == NULL) {
+        block->next = NULL;
+        return block;
+    }
+    Node* traverser = head;
+    while (traverser->next != NULL) {
+        traverser = traverser->next;
+    }
+    block->data = data;
     block->prev = head;
     head->next = block;
     return head;
@@ -91,8 +100,6 @@ void display(Node* head) {
         printf(" -> %d", head->data);
     }
 }
-
-
 
 int main() {
     Node* head = NULL; 

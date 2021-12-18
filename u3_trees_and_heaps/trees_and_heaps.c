@@ -70,7 +70,7 @@ void destroy_nodes(Node *root)
     if (root->left != NULL)
         destroy_nodes(root->left);
     // if the node has a right child
-    if (root->right == NULL)
+    if (root->right != NULL)
         destroy_nodes(root->right);
 }
 
@@ -162,7 +162,7 @@ void lex_insert_leaf(Node *root, int data)
     {
 
         // If the left subtree is empty -> insert node
-        if (root->left == NULL)
+        if (root->right == NULL)
         {
             Node *new_node = create_node(data);
             root->right = new_node;
