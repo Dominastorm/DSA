@@ -64,7 +64,7 @@ Node* insertAtPosition(Node *head, int data, int pos) {
 
 Node* deleteFront(Node *head) {
     // if list is empty
-    if (head->next == NULL) {
+    if (head == NULL) {
         printf("List is empty!\n");
         return head;
     }
@@ -77,7 +77,7 @@ Node* deleteFront(Node *head) {
 
 Node* deleteBack(Node *head) {
     // if list is empty
-    if (head->next == NULL) {
+    if (head == NULL) {
         printf("List is empty!\n");
         return head;
     }
@@ -107,7 +107,7 @@ Node* deleteAtPosition(Node *head, int pos) {
 
 void display(Node* head) { 
     printf(" %d", head->data);
-    if (head->next == NULL) {
+    if (head == NULL) {
         printf("Empty list\n");
         return;
     }
@@ -118,8 +118,7 @@ void display(Node* head) {
 }
 
 int main() {
-    Node* head = (Node*) malloc(sizeof(Node));
-    head->next = NULL;
+    Node* head = NULL; 
 
     // choice based menu
     int choice;
