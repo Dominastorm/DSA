@@ -32,9 +32,11 @@ Node* insertFront(Node *head, int data) {
 Node* insertBack(Node *head, int data) {
     Node* block = (Node*) malloc(sizeof(Node));
     block->data = data;
-
+    if (head == NULL) {
+        block->next = head;
+        return block;
+    }
     Node* traverser = head;
-    
     while (traverser->next != NULL) {
         traverser = traverser->next;
     }
@@ -46,28 +48,21 @@ Node* insertBack(Node *head, int data) {
 Node* insertAtPosition(Node *head, int data, int pos) {
     Node* block = (Node*) malloc(sizeof(Node));
     block->data = data;
-
     Node* traverser = head;
-
     for (int i = 0; i < pos-1; i++) {
         if (traverser->next != NULL) 
             traverser = traverser->next;
-        else
+        else {
             printf("IndexError: Position out of range!\n");
+            return head;
+        }
     }
-
     block->next = traverser->next;
     traverser->next = block;
-
     return head;
 }
 
 Node* deleteFront(Node *head) {
-    // if list is empty
-    if (head == NULL) {
-        printf("List is empty!\n");
-        return head;
-    }
     // if list is not empty
     Node* temp = head;
     head = head->next;
@@ -76,11 +71,6 @@ Node* deleteFront(Node *head) {
 }
 
 Node* deleteBack(Node *head) {
-    // if list is empty
-    if (head == NULL) {
-        printf("List is empty!\n");
-        return head;
-    }
     // If list is not empty
     Node* traverser = head;
     while (traverser->next->next != NULL) 
@@ -161,18 +151,30 @@ int main() {
         scanf("%d", &data);
         printf("Enter position to be inserted at: ");
         scanf("%d", &pos);
-        head = insertAtPosition(head, data, pos);
-        display(head);
+        if (head != NULL) { 
+            head = insertAtPosition(head, data, pos);
+            display(head);
+        }
+        else 
+            printf("Empty list!");
     }
     // delete front
     else if (choice == 4) {
-        head = deleteFront(head);
-        display(head);
+        if (head != NULL) { 
+            head = deleteFront(head);
+            display(head);
+        }
+        else 
+            printf("Empty list!");
     }
     // delete back
     else if (choice == 5) {
-        head = deleteBack(head);
-        display(head);
+        if (head != NULL){
+            head = deleteBack(head);
+            display(head);
+        }        
+        else 
+            printf("Empty list!");
     }
     // delete at position
     else if (choice == 6) {
@@ -183,7 +185,10 @@ int main() {
     }
     // traverse and display
     else if (choice == 7) {
-        display(head);
+        if (head != NULL)
+            display(head);
+        else
+            printf("Empty list!");
     }
     // exit
     else 
