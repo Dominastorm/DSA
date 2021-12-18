@@ -233,8 +233,8 @@ void tree_preorder(Tree *tree)
 
 /*
 1. Check if there is a root node in the tree
-2. Print the root node's data
-3. Traverse the left subtree
+2. Traverse the left subtree
+3. Print the root node's data
 4. Traverse the right subtree
 */
 
@@ -265,9 +265,9 @@ void tree_inorder(Tree *tree)
 
 /*
 1. Check if there is a root node in the tree
-2. Print the root node's data
-3. Traverse the left subtree
-4. Traverse the right subtree
+2. Traverse the left subtree
+3. Traverse the right subtree
+4. Print the root node's data
 */
 
 // Recursive function
@@ -275,12 +275,12 @@ void postorder_leaves(Node *root)
 {
     if (root != NULL)
     {
-        // Traverse right subtree
-        postorder_leaves(root->right);
-
         // Traverse left subtree
         postorder_leaves(root->left);
 
+        // Traverse right subtree
+        postorder_leaves(root->right);
+        
         // visit root node
         printf("%d ", root->data);
     }
