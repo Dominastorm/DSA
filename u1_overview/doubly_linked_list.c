@@ -26,7 +26,6 @@ Node* insertFront(Node* head, int data) {
     Node* block = (Node*) malloc(sizeof(Node));    
     block->data = data; 
     block->next = head;
-    head->prev = block;
     return block;
 }
 
@@ -81,13 +80,19 @@ Node* deleteAtPosition(Node* head, int pos) {
     }
 }
 
-void display(Node* head) {
-    Node* traverser = head;
-    while (traverser->next != NULL) {
-        traverser = traverser->next;
-        printf("%d->\n", traverser->data);
+void display(Node* head) { 
+    printf(" %d", head->data);
+    if (head == NULL) {
+        printf("Empty list\n");
+        return;
+    }
+    while(head->next != NULL) {
+        head = head->next;
+        printf(" -> %d", head->data);
     }
 }
+
+
 
 int main() {
     Node* head = NULL; 
